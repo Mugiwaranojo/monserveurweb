@@ -5,13 +5,13 @@ function InfoSystem(socketClient){
 };
 
 InfoSystem.checkUserPassword= function(username, password, callback){
-	/*exec(['../batch/checkpassword.bash', username, password], function(err, out, code) {
+	exec([__dirname+'/../batch/checkpassword.bash', username, password], function(err, out, code) {
 		if (err instanceof Error){
 			console.log(err);
 			throw err;
-		}*/
+		}
 		callback("ok");
-	//});
+	});
 }
 
 InfoSystem.prototype.sendUnixVersion = function(){
