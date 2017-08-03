@@ -10,7 +10,9 @@ then
 	exit 2
 fi
 serverUserInfo=`cat /etc/shadow | grep $1 | cut -d '/' -f2`
-clientUserInfo=`mkpasswd -m sha-512 $2 -s "iO9lS/8m" | cut -d '/' -f2`
+salt=`cat /etc/shadow | grep $1 | cut -d '$' -f3`
+clientUserInfo=`mkpasswd -m sha-512 $2 -s $salt | cut -d '/' -f2`
+
 if [ $serverUserInfo != $clientUserInfo ]
 then
 	echo "invalid"

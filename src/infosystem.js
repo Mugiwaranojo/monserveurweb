@@ -10,7 +10,7 @@ InfoSystem.checkUserPassword= function(username, password, callback){
 			console.log(err);
 			throw err;
 		}
-		callback("ok");
+		callback(out);
 	});
 }
 

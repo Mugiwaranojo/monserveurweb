@@ -23,7 +23,7 @@ app.get('/login', function(req, res, next) {
 
 app.post('/login', function(req, res){
 	infosystem.checkUserPassword(req.body.username, req.body.password, function(result){
-		if(result=="ok"){
+		if(result.trim()=="ok"){
 			var token= jwt.sign({'username'	: req.body.username}, jwtSecret, {expiresIn : '1h'});
 			req.session.serverToken= token;
 			res.json({'token': token});
